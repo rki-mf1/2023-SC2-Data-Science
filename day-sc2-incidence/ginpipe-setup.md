@@ -24,10 +24,11 @@ The pipeline uses the following dependencies:
 
 ## Installation
 ### 1. Clone repository
-Note that we are using GInPipe on **covsonar** branch:
 ```
-git clone https://github.com/KleistLab/GInPipe/tree/covsonar
+git clone https://github.com/KleistLab/GInPipe
 ```
+Or download the latest release: https://github.com/KleistLab/GInPipe/releases/tag/v3.0.0
+
 ### 2. Install (mini)conda 
 Conda will manage the dependencies of our pipeline. Installation instructions can be found here: https://docs.conda.io/projects/conda/en/latest/user-guide/install.
 
@@ -41,14 +42,11 @@ cd path/to/ginpipe
 #### 3.1. Create and ativate environment from environment file and install Snakemake
 ```
 conda env create -f env/env.yml
-conda activate GInPipe
-conda install -c conda-forge -c bioconda snakemake
+conda activate GInPipe3
 ```
 #### 3.2. If an error occurs, try to install packages via mamba
-From ***base*** environment:
-```
-conda install -c conda-forge mamba
-```
+Follow the instructions to install Mamba: https://mamba.readthedocs.io/en/latest/mamba-installation.html
+
 Add channels where mamba/conda will look for the packages:
 ```
 conda config --add channels r 
@@ -65,21 +63,11 @@ Activate the new environment:
 ```
 conda activate env/tutorial
 ```
-Install **ginpipepy** package via pip:
-```
-pip install git+https://github.com/KleistLab/ginpipepy
-```
-And finally, install Snakemake:
-```
-mamba install snakemake
-```
 ### 4. Installation on M1/M2 Mac
- If you have a newer Mac with M1/M2 chip some packages might not install via conda (the conda message in terminal will say that some packages were not found and environment will not be built and resolved). If this is the case, follow instructions below.
+ If you have a newer Mac with M1/M2 chip some packages might not install via conda/mamba. If this is the case, follow instructions below.
 
-From ***base*** environment:
-```
-conda install -c conda-forge mamba
-```
+Follow the instructions to install Mamba: https://mamba.readthedocs.io/en/latest/mamba-installation.html
+
 Add channels where mamba/conda will look for the packages:
 ```
 conda config --add channels r 
@@ -88,7 +76,7 @@ conda config --add channels conda-forge
 conda config --add channels bioconda 
 conda config --add channels anaconda   
 ```
-Make a new environment using mamba skipping packages that mamba couldn't install (e.g. in this case these are **pysam**,**samtools**, **seqkit** and **minimap2**). Give it a different name to not cause conflicts with provided environment in *env/env.yml*, e.g. *tutorial*:
+Make a new environment using mamba skipping packages that mamba couldn't install (in this case **pysam**,**samtools**, **seqkit** and **minimap2**). Give it a different name to not cause conflicts with provided environment in *env/env.yml*, e.g. *tutorial*:
 ```
 mamba create -y -p env/tutorial bbmap pip numpy biopython matplotlib pandas scipy scikit-fda
 ```
@@ -105,10 +93,6 @@ Install packages with brew (https://brew.sh)
 brew install samtools
 brew install seqkit
 brew install minimap2
-```
-And finally, install Snakemake:
-```
-mamba install snakemake
 ```
 
 [Next: initialize and run GInPipe](ginpipe_init.md)
