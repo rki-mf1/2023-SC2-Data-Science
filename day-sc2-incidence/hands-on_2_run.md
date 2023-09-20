@@ -3,9 +3,9 @@
 ### 5 Initialization
 
 As input the pipeline requires names of the input files, binning- and smoothing parameters.
-These variables are stored in [`config.yaml`](./config.yaml).
+These variables are stored in file **config.yml**.
 
-*Note:* paths to files in [`config.yaml`](./config.yaml) should be either:
+*Note:* paths to files in **config.yml** should be either:
 - absolute,
 - or relative to the main pipeline Snakefile,
 - or relative to the working directory.
@@ -18,7 +18,7 @@ The pipeline requires a samples file along with a sequecing-, or better, collect
 The pipeline automatically chooses the workflow according to the file extension. So please name your sample file either with *.fasta* or *.csv*.
 
 
-Copy the file path and paste it into the variable **samples** of [`config.yaml`](./config.yaml):
+Copy the file path and paste it into the variable **samples** of **config.yml**:
 
   ```
   samples: "path/to/sequences/datafile"
@@ -40,7 +40,7 @@ The header of the reference sequence can contain an arbitrary name, but importan
 **'>some_reference_name'**. If there are whitespaces present in the reference name string, a substring before the first whitespace will be used.
 
 
-Add the file path of reference sequence into the variable **reference** of [`config.yaml`](./config.yaml).
+Add the file path of reference sequence into the variable **reference** of **config.yml**.
 
   ```
   reference: "path/to/consensus/sequence.fasta"
@@ -88,7 +88,7 @@ If no reported cases data is provided, leave the fields empty like this:
   ```
 
 #### 5.3 Binning parameters
-You also have to set the parameters for some of the binning methods in [`config.yaml`](./config.yaml).
+You also have to set the parameters for some of the binning methods in **config.yml**.
 You can set the number of sequences per bin, and the number of days.
 Parameters can be given as an array or a list (see section above). Additionally, minimal bin size and maximal days span should be
 provided.
@@ -153,4 +153,4 @@ snakemake --snakefile GInPipe --configfile demo/demo_config.yaml -j -d demo
 
 ### 7* Run pipeline with Germany data
 
-Download Germany data (https://osf.io/hxk5m), configure and run the pipeline as described above.
+Download a different subset of Germany data (https://osf.io/hxk5m), configure and run the pipeline as described above.
