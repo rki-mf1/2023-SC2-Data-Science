@@ -1,7 +1,7 @@
 # Hands-on session Day 4: Incidence estimation
 
 ## Introduction
-In this hands-on session we will be working with a pipeline tool called GInPipe implemented in Snakemake. This pipeline infers the trajectory of an effective population size (or incidence) for a viral pandemic from a collection of time-stamped viral sequences. The pipeline has so far been tested for SARS-CoV-2.
+In this hands-on session we will be working with a pipeline tool called [GInPipe](https://github.com/KleistLab/GInPipe) implemented in Snakemake. This pipeline infers the trajectory of an effective population size (or incidence) for a viral pandemic from a collection of time-stamped viral sequences. The pipeline has so far been tested for SARS-CoV-2.
 In brief: Viral sequence data is placed into redundant temporal bins. For each bin, a parameter is inferred that correlates with the effective population size estimate (or incidence) of the infection. GInPipe then smoothes over all derived parameters and reconstructs continuous trajectory of the effective population size estimate (or incidence) [[1]](#1).
 
 The pipeline uses the following dependencies:
@@ -39,7 +39,7 @@ Switch to whatever directory you put the GInPipe repository into:
 cd path/to/ginpipe
 ```
 
-#### 3.1. Create and ativate environment from environment file and install Snakemake
+#### 3.1. Create and activate environment
 ```
 conda env create -f env/env.yml
 conda activate GInPipe3
@@ -95,7 +95,7 @@ brew install seqkit
 brew install minimap2
 ```
 
-[Next: initialize and run GInPipe](ginpipe_init.md)
+[Next: initialize and run GInPipe](hands-on_2_run.md)
 
 
 ## Reference

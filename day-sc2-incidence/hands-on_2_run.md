@@ -13,8 +13,8 @@ These variables are stored in [`config.yaml`](./config.yaml).
 For more information about the YAML markup format refer to documentation: https://yaml.org
 
 
-#### 5.1 Input covSonar/FASTA file
-As an input, the pipeline requires the samples along with a sequecing-, or better, collection date (format **%YYYY-%mm-%dd**). The file can be either given as a fasta file or a table containing the dna profile (SNVs).
+#### 5.1 Input CSV/FASTA file
+The pipeline requires a samples file along with a sequecing-, or better, collection date (format **%YYYY-%mm-%dd**). The file can be either given as a FASTA file or a table containing the dna profile (SNVs).
 The pipeline automatically chooses the workflow according to the file extension. So please name your sample file either with *.fasta* or *.csv*.
 
 
@@ -32,7 +32,7 @@ In the field **name**, you can provide a name for the given samples, for example
 
 *1. FASTA file*
 
-If the input file is a FASTA file with the sequences,the date must be part of the header behind a vertical bar, similar to sequence-names in GISAID: **'>some_name|%YYYY-%mm-%dd'**.
+If the input file is a FASTA file,the date must be part of the header behind a vertical bar, similar to sequence-names in GISAID: **'>some_name|%YYYY-%mm-%dd'**.
 
 
 Along with the FASTA file a reference sequence needs to be provided (also in FASTA format). 
@@ -49,7 +49,7 @@ Add the file path of reference sequence into the variable **reference** of [`con
 
 *2. CSV file*
 
-The input file can also be a CSV file containing one column with the date and one column with the mutations which are separated by blank. The format of the each mutation is WtPositionMut. The column names must be given as *date* and *dna_profile*
+The input file can also be a CSV file containing one column with the date and one column with the mutations which are separated by a blank. Each mutation has a format *WildtypePositionMutant*. The column names must be given as *date* and *dna_profile*
 
 ```
 date,dna_profile
@@ -67,7 +67,7 @@ To compare estimated population dynamics with reported active cases, provide the
   ```
   reported_cases: ["path/to/reported_cases.csv", ",", date, new_cases, '%Y-%m-%d']
   ```
-Alternatively, all arrays can be given in the configuration file as a list, like this:
+Alternatively, all arrays in the configuration file can be given as a list, like this:
 
   ```
   reported_cases:
@@ -105,22 +105,22 @@ If parameter **seq_per_bin** is an empty list, a default mode with predefined fr
 
 #### 5.4 Threshold for mutations
 
-Low-abundance point mutations are filtered out, to avoid the consideration of sequence errors.
+Low-abundance point mutations are filtered out to avoid using sequencing errors as real mutations.
 The cutoff for the amount of mutations at a certain sequence position in the whole dataset is set with:
 
   ```
   freq_cutoff: 2
   ```
 
-#### 5.6 Trajectory smoothing parameters
-Before the minimum true incidence is calculated the phi estimates and reported cases can be smoothed to prevent the normalisation by an outlier. The smoothing bandwith is set with:
+#### 5.5 Trajectory smoothing parameters
+Before the minimum true incidence is calculated the phi estimates and reported cases can be smoothed to prevent normalisation by an outlier. Smoothing bandwith is set with:
 
   ```
   smoothing_bandwidth_phi: 7
   smoothing_bandwidth_mi: 7 
   ```
 
-#### 5.7 Selecting time period 
+#### 5.6 Selecting time period 
 Also the time frame to be considered can be optionally set with parameters
 
 ```
@@ -151,4 +151,6 @@ To run the pipeline go into the repository where the GInPipe file is located and
 snakemake --snakefile GInPipe --configfile demo/demo_config.yaml -j -d demo
 ```
 
-The results will be stored in directory **demo**.
+### 7* Run pipeline with Germany data
+
+Download Germany data (https://osf.io/hxk5m), configure and run the pipeline as described above.

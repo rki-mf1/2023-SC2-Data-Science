@@ -7,4 +7,4 @@
 
 ## Practical part
 
-Next: [Hands-on & practical part](hands-on.md)
+Next: [Hands-on & practical part](hands-on_1_setup.md)
